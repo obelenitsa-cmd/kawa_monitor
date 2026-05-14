@@ -212,23 +212,3 @@ void RW_press_dat(float FW_pressure) // Давление Rear: 250 kPa (2.50 kgf
     delay(1);
   }
 }
-
-
-//void Warning (bool Warning_state)
-//{
-//  if (Warning_ico && Warning_state) {
-//    gfx->setCursor(144, 94); 
-//    gfx->setFont(&Symbol);
-//    gfx->setTextSize(1, 1, 1);
-//    gfx->setTextColor(YELLOW, BLACK); 
-//    gfx->print("!");
-//    delay(1);
-//  }
-//  if (!Warning_state) {
-//    gfx->fillRect(144/*x*/, 64/*y*/, 38 /*width*/, 42 /*height*/, BLACK); 
-//    delay(1);
-//  }
-//}
-
-
-
