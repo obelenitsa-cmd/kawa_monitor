@@ -55,7 +55,6 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 };
 
 void SetupBLE_TPMS() {
-  //Serial.begin(115200);
 
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan();  //create new scan
