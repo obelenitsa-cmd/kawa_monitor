@@ -1,5 +1,3 @@
-//bool Warning_state = false;
-
 TaskHandle_t Task1;
 TaskHandle_t Task2;
 
@@ -29,17 +27,7 @@ void setup() {
 }
 
  void loop() {
-   //LoopKline(); 
-   //LoopBLE_TPMS();
-    //========================================================= независимый цикл предупреждения
-    //unsigned long cur_millis = millis();
-    //if (cur_millis - timer >= 500) {
-    //  timer = cur_millis;        
-    //  Warning_state = !Warning_state;
-    //  Warning(Warning_state); 
-    //}
-    //=========================================================
-   }
+}
 
 
 
