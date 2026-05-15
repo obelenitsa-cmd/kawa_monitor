@@ -4,14 +4,12 @@ TaskHandle_t Task2;
 void Task1code(void *parameter) {
   for (;;) {  // бесконечный цикл
    LoopKline(); 
-   //LoopBLE_TPMS();
     delay(1);
   }
 }
 
 void Task2code(void *parameter) {
-  for (;;) {  // бесконечный цикл
-   //LoopKline(); 
+  for (;;) {  // бесконечный цикл 
    LoopBLE_TPMS();
     delay(1);
   }
