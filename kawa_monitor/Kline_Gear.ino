@@ -5,7 +5,7 @@ HardwareSerial KSerial(1); // Создаем объект для UART1. Если
 #define MAXSENDTIME     100       // Время ожидания 
 
 const uint8_t ISORequestByteDelay = 7; // Время между байтами ; по ISO14230-2: 5-20
-const uint8_t ISORequestDelay = 40; // Время между запросами
+const uint8_t ISORequestDelay = 60; // Время между запросами; по ISO14230-2: 55-5000 Время между окончанием ответа ЭБУ и началом нового запроса  или время между окончанием запроса  и началом нового запроса, если ЭБУ не отвечает (фактически расчетное 70)
 
 const uint8_t ECUaddr = 0x11; // Kawasaki = 0x11
 const uint8_t myAddr = 0xF1; 
