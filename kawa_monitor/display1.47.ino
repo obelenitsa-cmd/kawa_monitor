@@ -151,7 +151,7 @@ void GearDisplay(uint8_t gear)
         gfx->setTextColor(GREEN, BLACK);
         gfx->print("N");
       }
-      else if (geardata>0 && geardata<=10){
+      else if (geardata>0 && geardata<10){
         gfx->setTextColor(WHITE, BLACK);
         gfx->print(gear);
       } 
