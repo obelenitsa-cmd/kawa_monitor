@@ -132,7 +132,6 @@ void TempDisplay(int temp) // Температура по Цельсию =  (Hex
     gfx->setCursor(301, 95); 
     gfx->setTextColor(WHITE, BLACK);
     gfx->print("c");
-    //gfx->drawCircle(295, 145, 1, WHITE); // символ градус
     gfx->drawCircle(295, 100, 1, WHITE); // символ градус
 
     delay(1);
