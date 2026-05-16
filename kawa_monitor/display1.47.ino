@@ -146,15 +146,15 @@ void GearDisplay(uint8_t gear)
    gfx->setCursor(103, 138);
    gfx->setFont(&DotDigital12); //шрифт
    gfx->setTextSize(4 /* x scale */, 4 /* y scale */, 4 /* pixel_margin */); 
-      if (geardata==0) {
+      if (gear==0) {
         gfx->setTextColor(GREEN, BLACK);
         gfx->print("N");
       }
-      else if (geardata>0 && geardata<10){
+      else if (gear>0 && gear<10){
         gfx->setTextColor(WHITE, BLACK);
         gfx->print(gear);
       } 
-      else if (geardata==45) {
+      else if (gear==45) {
         gfx->setTextColor(WHITE, BLACK);
         gfx->print("-");
       }
