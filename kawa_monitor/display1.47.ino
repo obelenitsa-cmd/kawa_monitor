@@ -51,7 +51,6 @@ void SetupDisplay()
   gfx->setFont(); 
   gfx->setTextColor(WHITE, BLACK);
   gfx->setTextSize(3 /* x scale */, 4 /* y scale */, 2 /* pixel_margin */); // for TPMS
-  //gfx->setCursor(32, 68); // for TPMS
   gfx->setCursor(12, 71); // for TPMS
   gfx->print("bar"); // for TPMS
 
@@ -59,7 +58,6 @@ void SetupDisplay()
 
 void DataDisplay(bool disconn) // если нет или потеряно подключение к ECU
 {
-//  if (disconn) {
      gfx->setFont(); 
      gfx->setTextColor(WHITE, BLACK);
      gfx->setTextSize(4 /* x scale */, 5 /* y scale */, 2 /* pixel_margin */);
@@ -75,10 +73,7 @@ void DataDisplay(bool disconn) // если нет или потеряно под
      gfx->setCursor(103, 138);
      gfx->print("-");
 
-     delay(1);
-
-  //} 
-
+     delay(1); 
 }
 
 void VoltDisplay(float volt) // Volt (XX / 12.75)  возможно (A - 128) * 0.5 или (HexA * 20) / 256
@@ -116,14 +111,11 @@ void TempDisplay(int temp) // Температура по Цельсию =  (Hex
    
    gfx->setFont(); 
    gfx->setTextSize(4 /* x scale */, 5 /* y scale */, 2 /* pixel_margin */);
-   //gfx->setCursor(248, 101);
    gfx->setCursor(248, 132);
       if (temp >= 115){ // если перегрев >= 115°C
         gfx->setTextColor(YELLOW, BLACK);
-        //Warning_ico = true;
       } else {
          gfx->setTextColor(WHITE, BLACK);
-         //Warning_ico = false;
         }
     gfx->print(buffer);
 
@@ -158,6 +150,7 @@ void GearDisplay(uint8_t gear)
         gfx->print("-");
       }
       else {
+        gfx->setTextColor(YELLOW, BLACK);
         gfx->print("F");
       }
    delay(1);
@@ -178,10 +171,8 @@ void FW_press_dat(float FW_pressure) // Давление Front: 225 kPa (2.25 kg
     gfx->setCursor(12, 13); 
     if (FW_bar <= 1.95 || FW_bar >= 2.55){ // если низкое или высокое давление
       gfx->setTextColor(YELLOW, BLACK);
-      //Warning_ico = true;
     } else {
          gfx->setTextColor(WHITE, BLACK);
-         //Warning_ico = false;
         }
     gfx->print(buffer); 
 
@@ -203,10 +194,8 @@ void RW_press_dat(float FW_pressure) // Давление Rear: 250 kPa (2.50 kgf
     gfx->setCursor(12, 132); 
     if (FW_bar <= 2.2 || FW_bar >= 2.8){ // если низкое или высокое давление
       gfx->setTextColor(YELLOW, BLACK);
-      //Warning_ico = true;
     } else {
          gfx->setTextColor(WHITE, BLACK);
-         //Warning_ico = false;
         }
     gfx->print(buffer); 
 
