@@ -81,7 +81,7 @@ unsigned long previousMillis = 0; // Время последнего сброс�
           TmpErr = 1;
           }
 
-        delay(ISORequestDelay);  
+        delay(ISORequestDelay);
         
         //========================================================= Передача         
         cmdBuf[1] = 0x0B;  // запрос передачи
@@ -91,11 +91,16 @@ unsigned long previousMillis = 0; // Время последнего сброс�
          gear = (uint8_t) respBuf[2]; // данные в байте передачи 
         if (respSize == 3) {
           if (pidgear == 0x0B) {
-           GearDisplay(gear); //передача
+             if (gear == 0) {
+              GearDisplay(78); //"N"
+             } 
+             else { 
+               GearDisplay(gear); //передача
+             }
           }
         }
         else if (respSize == 0) { // нет данных
-          GearDisplay(45); 
+          GearDisplay(45); //"-"
           GeaErr = 1;
         }
         delay(ISORequestDelay);
