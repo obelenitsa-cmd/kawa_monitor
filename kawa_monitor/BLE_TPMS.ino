@@ -7,13 +7,13 @@ int scanTime = 5;  //In seconds
 BLEScan *pBLEScan;
 
 int FW_updated; // was this sensor updated
-float FW_voltage; // sensor battery voltage in V
-int FW_temperature; // sensor temperature in °C
+//float FW_voltage; // sensor battery voltage in V
+//int FW_temperature; // sensor temperature in °C
 uint8_t FW_pressure; // sensor pressure
 
 int RW_updated; // was this sensor updated
-float RW_voltage; // sensor battery voltage in V
-int RW_temperature; // sensor temperature in °C
+//float RW_voltage; // sensor battery voltage in V
+//int RW_temperature; // sensor temperature in °C
 float RW_pressure; // sensor pressure
 
 class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
