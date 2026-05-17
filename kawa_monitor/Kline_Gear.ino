@@ -94,7 +94,7 @@ unsigned long previousMillis = 0; // Время последнего сброс�
            GearDisplay(gear); //передача
           }
         }
-        else if (respSize == 0) { // Ошибка 
+        else if (respSize == 0) { // нет данных
           GearDisplay(45); 
           GeaErr = 1;
         }
