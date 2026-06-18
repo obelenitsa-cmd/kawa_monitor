@@ -12,10 +12,4 @@ K-Bus индикатор для Kawasaki на ESP32-S3 LCD 1.47.
 Так же добавил фототранзистор и функцию автоматического затемнения экрана (по ШИМ), что бы в темноте (ночью) сильно не светился, а на солнце была максимальная яркость. 
 При этом заменил оригинальное сопротивление ограничивающее ток подсветки с 10 Ом на 4,7 Ом, чем увеличил максимальную яркость.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cd805450-836b-455d-8ffe-b85c07549526" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3ff33cc2-b5d0-4a37-a680-a0f9cfe8b01d" />
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d8603027-5373-4cef-887f-f1be01680ccc" />
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/992bb20f-b604-4ef4-b2d9-c622cafce0ee" />
