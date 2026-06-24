@@ -13,3 +13,8 @@
 При этом заменил оригинальное сопротивление ограничивающее ток подсветки с 10 Ом на 4,7 Ом, чем увеличил максимальную яркость.
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/992bb20f-b604-4ef4-b2d9-c622cafce0ee" />
+
+Параметры ESP32-S3:
+
+<img width="418" height="870" alt="Arduino_IDE_Tools" src="https://github.com/user-attachments/assets/94f76445-ac9f-4bd4-9314-774938258f47" />
+
