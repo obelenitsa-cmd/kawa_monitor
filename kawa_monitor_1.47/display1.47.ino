@@ -3,29 +3,29 @@
 
 
 //====================================================================== если ESP32-S3 LCD 1.47 Touch  ==========================
-//#define GFX_BL 46
-//#define LCD_RST 40
+#define GFX_BL 46
+#define LCD_RST 40
 
-//#define Touch_I2C_SDA 42
-//#define Touch_I2C_SCL 41
-//#define Touch_RST     47
-//#define Touch_INT     48
+#define Touch_I2C_SDA 42
+#define Touch_I2C_SCL 41
+#define Touch_RST     47
+#define Touch_INT     48
 
-//Arduino_DataBus *bus = new Arduino_ESP32SPI(45, 21, 38, 39);
-//Arduino_GFX *gfx = new Arduino_ST7789(bus, LCD_RST, 5, false, 172, 320, 34, 0, 34, 0);
+Arduino_DataBus *bus = new Arduino_ESP32SPI(45, 21, 38, 39);
+Arduino_GFX *gfx = new Arduino_ST7789(bus, LCD_RST, 5, false, 172, 320, 34, 0, 34, 0);
 
-//#define PIN_PHOTO 7
+#define PIN_PHOTO 7
 
 //======================================================================
 //====================================================================== если ESP32-S3 LCD 1.47 No Touch ==========================
-#define GFX_CS      42
-#define GFX_RST     39
-#define GFX_BL      48       // if DF_GFX_BL - default backlight pin
+//#define GFX_CS      42
+//#define GFX_RST     39
+//#define GFX_BL      48       // if DF_GFX_BL - default backlight pin
 
-Arduino_DataBus *bus = new Arduino_ESP32SPI( 41, 42, 40, 45, -1, FSPI );
-Arduino_GFX *gfx = new Arduino_ST7789( bus, 39, 1, true, 172, 320, 34, 0, 34, 0); 
+//Arduino_DataBus *bus = new Arduino_ESP32SPI( 41, 42, 40, 45, -1, FSPI );
+//Arduino_GFX *gfx = new Arduino_ST7789( bus, 39, 1, true, 172, 320, 34, 0, 34, 0); 
 
-#define PIN_PHOTO 6
+//#define PIN_PHOTO 6
 //======================================================================
 //============ RGB-565 (16-bit)
 #define BLACK 0x0000
@@ -92,8 +92,8 @@ void LoopDisplay() {
  float voltdata, newvolt;
  int tempdata, newtemp;
 
- char buffer[4][5]; // Создаем 4 буфера, каждый размером по 5 байт
- char clean_buffer[4][5] = {0}; // Инициализация нулями при объявлении
+ char buffer[4][8]; // Создаем 4 буфера, каждый размером по 5 байт
+ char clean_buffer[4][8] = {0}; // Инициализация нулями при объявлении
 
   // ================================================если нет или потеряно подключение к ECU
   if (OnECU != ECUconnected){  // обновление данных только если данные изменились
@@ -186,7 +186,8 @@ void LoopDisplay() {
     delay(1);
   }
 
-  // ============================================================================Давление Front: 225 kPa (2.25 kgf/cm², 32 psi)  допустимое отклонение 0,1–0,2 kgf/cm², разогрев на 0.2 - 0.4
+  /*
+  // ============================================================================1 байт: Давление Front: 225 kPa (2.25 kgf/cm², 32 psi)  допустимое отклонение 0,1–0,2 kgf/cm², разогрев на 0.2 - 0.4
   FW_bar = FW_pressure * .03144;
   //char buffer[5];
   snprintf(buffer[2], sizeof(buffer[2]), "%3.1f", FW_bar);  // один знак после запятой
@@ -206,10 +207,64 @@ void LoopDisplay() {
 
     delay(1);
   }
+  */
 
-  // =========================================================================Давление Rear: 250 kPa (2.50 kgf/cm², 36 psi) допустимое отклонение 0,1–0,2 kgf/cm², разогрев на 0.2 - 0.4
-    RW_bar = RW_pressure * .03144;
+    // ============================================================================2 байт: Давление Front: 225 kPa (2.25 kgf/cm², 32 psi)  допустимое отклонение 0,1–0,2 kgf/cm², разогрев на 0.2 - 0.4
+    if (FW_pressure == 146){
+      FW_bar = 0;
+    }
+    else if (FW_pressure > 146){
+      FW_bar = ((float)FW_pressure - 146.0f) / 145.038f;
+    }
+  snprintf(buffer[2], sizeof(buffer[2]), "%3.1f", FW_bar);  // один знак после запятой
+     
+  if (new_FW_bar != FW_bar){  // обновление данных только если данные изменились
+    new_FW_bar = FW_bar;
+    gfx->setFont(); 
+    gfx->setTextColor(WHITE, BLACK);
+    gfx->setTextSize(4 , 5 , 2 );
+    gfx->setCursor(12, 13); 
+    if (FW_bar <= 1.85 || FW_bar >= 2.65){ // если низкое или высокое давление
+      gfx->setTextColor(YELLOW, BLACK);
+    } else {
+         gfx->setTextColor(WHITE, BLACK);
+        }
+    gfx->print(buffer[2]); 
+
+    delay(1);
+  }
+
+  /*
+  // =========================================================================1 байт: Давление Rear: 250 kPa (2.50 kgf/cm², 36 psi) допустимое отклонение 0,1–0,2 kgf/cm², разогрев на 0.2 - 0.4
+    RW_bar = RW_pressure * .03144; //1 байт выходного 8-битного значения
   //char buffer[5];
+  snprintf(buffer[3], sizeof(buffer[3]), "%3.1f", RW_bar);  // один знак после запятой
+     
+  if (new_RW_bar != RW_bar){  // обновление данных только если данные изменились
+    new_RW_bar = RW_bar;
+    gfx->setFont(); 
+    gfx->setTextColor(WHITE, BLACK);
+    gfx->setTextSize(4 , 5 , 2 );
+    gfx->setCursor(12, 132); 
+    if (FW_bar <= 2.1 || FW_bar >= 2.9){ // если низкое или высокое давление
+      gfx->setTextColor(YELLOW, BLACK);
+    } else {
+         gfx->setTextColor(WHITE, BLACK);
+        }
+    gfx->print(buffer[3]); 
+
+    delay(1);
+  }
+  */
+
+  // =========================================================================2 байта: Давление Rear: 250 kPa (2.50 kgf/cm², 36 psi) допустимое отклонение 0,1–0,2 kgf/cm², разогрев на 0.2 - 0.4
+    if (RW_pressure == 146){
+      RW_bar = 0;
+    }
+    else if (RW_pressure > 146){
+      RW_bar = ((float)RW_pressure - 146.0f) / 145.038f;
+    }
+
   snprintf(buffer[3], sizeof(buffer[3]), "%3.1f", RW_bar);  // один знак после запятой
      
   if (new_RW_bar != RW_bar){  // обновление данных только если данные изменились
