@@ -21,7 +21,7 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
            byte cManufacturerData[100]; // Вспомогательная переменная для преобразования строки (с заглавной буквой S) в строку в стиле C.
            memcpy(cManufacturerData, strManufacturerData.c_str(), strManufacturerData.length()); // Преобразовать строку в строку в стиле C.
 
-            //FW_pressure = (uint8_t)cManufacturerData[3]; // для датчика "5b:84:22:11:11:11"
+            //FW_pressure = (uint8_t)cManufacturerData[3]; // для датчика "5b:84:22:11:11:11" 1 байт
            FW_pressure = (uint16_t)cManufacturerData[3] << 8 | cManufacturerData[4]; //два байта для выходного 16-битного значения, psi для "12:30:af:00:02:4b"
 
            delay(1);
@@ -37,7 +37,7 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
            byte cManufacturerData[100]; // Вспомогательная переменная для преобразования строки (с заглавной буквой S) в строку в стиле C.
            memcpy(cManufacturerData, strManufacturerData.c_str(), strManufacturerData.length()); // Преобразовать строку в строку в стиле C.
 
-            //RW_pressure = (uint8_t)cManufacturerData[3]; // Для датчика "5b:70:51:11:11:11"
+            //RW_pressure = (uint8_t)cManufacturerData[3]; // Для датчика "5b:70:51:11:11:11" 1 байт
            RW_pressure = (uint16_t)cManufacturerData[3] << 8 | cManufacturerData[4]; //два байта для выходного 16-битного значения, psi для датчика "12:30:af:00:02:ce"
            delay(1);
          }
