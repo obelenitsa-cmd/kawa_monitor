@@ -87,6 +87,11 @@ void SetupDisplay()
   gfx->drawCircle(295, 100, 1, WHITE); // Температура, символ градус
 }
 
+// ================================================индикация низкого заряда батареи
+//unsigned long previousMillis = 0;
+//unsigned long interval = 500; 
+//bool state = false;             
+
 void LoopDisplay() {
 
  float voltdata, newvolt;
@@ -253,6 +258,23 @@ void LoopDisplay() {
         }
     gfx->print(buffer[3]); 
 
+    // ======================================================================================================= индикация низкой батареи
+    //unsigned long currentMillis = millis(); 
+
+  //if (currentMillis - previousMillis >= interval) {
+    //previousMillis = currentMillis;
+
+    //state = !state; // Переключаем состояние
+
+    //if (state) {
+      //Serial.println("Batt");
+      //interval = 500; // Задаем строго 500 мс для режима ON
+    //} else {
+      //Serial.println("BAR");
+      //interval = 500; // Время, сколько плата будет "отдыхать" в OFF перед новым циклом
+    //}
+  //}
+  // ======================================================================================================== индикация низкой батареи
     delay(1);
   }
   */
