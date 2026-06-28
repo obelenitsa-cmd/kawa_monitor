@@ -88,9 +88,9 @@ void SetupDisplay()
 }
 
 // ================================================таймер индикации низкого заряда батареи
-//unsigned long previousMillis = 0;
-//unsigned long interval = 500; 
-//bool state = false;             
+//unsigned long BatMillis = 0;
+//unsigned long BatInterval = 500; 
+//bool LowBatState = false;             
 
 void LoopDisplay() {
 
@@ -261,17 +261,17 @@ void LoopDisplay() {
     // ======================================================================================================= индикация низкой батареи
     //unsigned long currentMillis = millis(); 
 
-  //if (currentMillis - previousMillis >= interval) {
-    //previousMillis = currentMillis;
+  //if (currentMillis - BatMillis >= BatInterval) {
+    //BatMillis = currentMillis;
 
-    //state = !state; // Переключаем состояние
+    //LowBatState = !LowBatState; // Переключаем состояние
 
-    //if (state) {
+    //if (LowBatState) {
       //Serial.println("Batt");
-      //interval = 500; // Задаем строго 500 мс для режима ON
+      //BatInterval = 500; // Задаем строго 500 мс для режима ON
     //} else {
       //Serial.println("BAR");
-      //interval = 500; // Время, сколько плата будет "отдыхать" в OFF перед новым циклом
+      //BatInterval = 500; // Время, сколько плата будет "отдыхать" в OFF перед новым циклом
     //}
   //}
   // ======================================================================================================== индикация низкой батареи
