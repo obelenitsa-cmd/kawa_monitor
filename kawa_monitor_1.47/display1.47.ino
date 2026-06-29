@@ -17,7 +17,7 @@
 //#define BLACK   0x0000   // Черный 
 //#define WHITE   0xFFFF   // Белый 
 //#define YELLOW  0x07FF   // ЖЕЛТЫЙ
-//#define GREEN   0xAFE6   // ЗЕЛЕНЫЙ!
+//#define GREEN   0xAFE6   // ЗЕЛЕНЫЙ
 
 //#define PIN_PHOTO 7
 //====================================================================== если ESP32-S3 LCD 1.47 No Touch ==========================
