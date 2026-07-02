@@ -22,7 +22,7 @@ void setup() {
   SetupOTAWiFi();
   SetupBLE_TPMS();
 
-  xTaskCreatePinnedToCore(Task1code, "Task1", 4096, NULL, 1, &Task1, 0 ); //Ядро 0 
+  xTaskCreatePinnedToCore(Task1code, "Task1", 8192, NULL, 1, &Task1, 0 ); //Ядро 0 (4096 - периодически может происходить переполнение)
   delay(1);
   xTaskCreatePinnedToCore(Task2code, "Task2", 6144, NULL, 1, &Task2, 1); //Ядро 1  
 }
