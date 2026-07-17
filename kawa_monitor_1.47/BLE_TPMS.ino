@@ -51,7 +51,7 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
       // Безопасное чтение данных
       if (dataLength >= 5) { 
         uint16_t calculatedPressure = ((uint16_t)cManufacturerData[3] << 8) | cManufacturerData[4];
-        uint8_t batVal = (uint8_t)cManufacturerData[2];   
+        uint8_t batVal = (uint8_t)cManufacturerData[1];   
         bool isLowBat = (batVal <= 27); // низкое напряжение батареи, 2,7V или ниже
 
         // Читаем уровень сигнала 
