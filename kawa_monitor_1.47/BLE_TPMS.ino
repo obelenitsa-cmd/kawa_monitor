@@ -52,7 +52,7 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
       if (dataLength >= 5) { 
         uint16_t calculatedPressure = ((uint16_t)cManufacturerData[3] << 8) | cManufacturerData[4];
         uint8_t batVal = (uint8_t)cManufacturerData[1];   
-        bool isLowBat = (batVal <= 28); // низкое напряжение батареи, 2,8V или ниже
+        bool isLowBat = (batVal <= 25); // низкое напряжение батареи, 2,5V или ниже
 
         // Читаем уровень сигнала 
         int rssi = advertisedDevice.getRSSI();
