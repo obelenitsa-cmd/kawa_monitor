@@ -42,8 +42,6 @@ class MyAdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
     bool isRW = (foundAddress == targetRW);
 
     if (!isFW && !isRW) {
-      // Перед выходом принудительно удаляем устройство из памяти списка результатов сканирования!
-      pBLEScan->deletePeerDevice(foundAddress.toString()); 
       return;
     }
 
